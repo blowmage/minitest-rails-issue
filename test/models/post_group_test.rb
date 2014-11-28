@@ -1,6 +1,10 @@
 require 'test_helper'
 
-describe PostGroup do
+describe PostGroup, :model do
+  it "must use the db transaction in tests" do
+    self.class.ancestors.must_include ActiveSupport::TestCase
+  end
+
   describe :load do
     it 'should load posts' do
       group = PostGroup.load
